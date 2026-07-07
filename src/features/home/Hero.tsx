@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, Code2, Sparkles } from 'lucide-react';
+import Link from 'next/link'; // Importation de Link pour les redirections
 import Button from '../../components/Button';
 
 export default function Hero() {
@@ -15,7 +16,6 @@ export default function Hero() {
   const scaleBg = useTransform(scrollY, [0, 500], [1, 0.8]);
 
   return (
-    // Fond adaptatif : slate-50 le jour, slate-950 la nuit
     <section className="relative w-full h-[90vh] flex items-center justify-center overflow-hidden bg-slate-50 dark:bg-slate-950 px-4 transition-colors duration-300">
       
       {/* 1. ARRIÈRE-PLAN ANIMÉ */}
@@ -23,10 +23,8 @@ export default function Hero() {
         style={{ y: yBg, scale: scaleBg }}
         className="absolute inset-0 pointer-events-none z-0"
       >
-        {/* Grille de perspective : lignes slate-200 le jour, slate-900 la nuit */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-70 dark:opacity-40 transition-colors duration-300" />
         
-        {/* Cercles lumineux floutés */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-500/5 dark:bg-teal-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-3xl" />
       </motion.div>
@@ -58,17 +56,25 @@ export default function Hero() {
           Développeur Full-Stack spécialisé dans les architectures web modernes et performantes. Je transforme vos idées complexes en code propre.
         </p>
 
-        {/* Actions d'appel */}
+        {/* Actions d'appel avec redirections Next.js */}
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button variant="primary" size="lg" className="group gap-2 w-full sm:w-auto">
-            <span>Découvrir mes projets</span>
-            <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Button>
           
-          <Button variant="outline" size="lg" className="gap-2 w-full sm:w-auto border-slate-200 dark:border-slate-800 text-slate-800 dark:text-teal-400 hover:bg-slate-100 dark:hover:bg-teal-500/10">
-            <Code2 className="w-4 h-4" />
-            <span>Me contacter</span>
-          </Button>
+          {/* Redirection vers la page Projets */}
+          <Link href="/projets" className="w-full sm:w-auto">
+            <Button variant="primary" size="lg" className="group gap-2 w-full">
+              <span>Découvrir mes projets</span>
+              <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Button>
+          </Link>
+          
+          {/* Redirection vers la page Contact */}
+          <Link href="/contact" className="w-full sm:w-auto">
+            <Button variant="outline" size="lg" className="group gap-2 w-full border-slate-200 dark:border-slate-800 text-slate-800 dark:text-teal-400 hover:bg-slate-100 dark:hover:bg-teal-500/10">
+              <Code2 className="w-4 h-4 transition-colors duration-300" />
+              <span>Me contacter</span>
+            </Button>
+          </Link>
+
         </div>
       </motion.div>
 
