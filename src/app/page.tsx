@@ -3,10 +3,10 @@
 import React from 'react';
 import Hero from '../features/home/Hero';
 import TechStack from '../features/home/TechStack';
-import Features from '../features/home/Features';
 import Metrics from '../features/home/Metrics';
 import Preview from '../features/home/Preview';
 import Workflow from '../features/home/Workflow';
+import BentoSkills from '../components/BentoSkills'; // Import bien présent ici
 
 export default function Home() {
   return (
@@ -18,8 +18,8 @@ export default function Home() {
       {/* 2. Technologies */}
       <TechStack />
 
-      {/* 3. Domaines d'expertise */}
-      <Features />
+      {/* 3. Écosystème technique (La Bento Grid remplace l'ancienne section Features) */}
+      <BentoSkills />
 
       {/* 4. Statistiques */}
       <Metrics />
